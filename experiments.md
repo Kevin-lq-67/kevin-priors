@@ -24,6 +24,7 @@ verify the API contract before adding any real logic.
 | Version | Accuracy |
 |---------|----------|
 | All true | 20.23% (35 of 173) |
+| Claude Haiku 4.5 | 90.75% (157 of 173) |
 
 The number was a wake-up call: only 20% of priors in the public eval
 are actually labeled relevant. A "return false for everything"
@@ -56,8 +57,12 @@ A few things I had to handle along the way:
   warn about).
 - Using Claude Haiku 4.5. The task is short-string classification, so
   the bigger models weren't worth the extra cost.
-- The `false`-default fallback. Given the ~80% false rate, "fail to
-  false" is a much safer floor than "fail to true".
+- The `false`-default fallback. The all-true baseline scored 20%, so
+  the dataset must be ~80% false — which means returning `false` on
+  failure is much safer than returning `true`.
+
+- The combined result on the public quick check went from **20.23%
+  (all-true)** to **90.75%** with Claude.
 
 ## What didn't work
 
