@@ -28,7 +28,7 @@ import java.util.List;
 public class ClaudeRelevanceService implements RelevanceService {
 
     // TODO: maybe pull these out into application.properties later
-    private static final int MAX_TOKENS = 1024;
+    private static final int MAX_TOKENS = 8192;
 
     private AnthropicClient client;
     private final ObjectMapper mapper = new ObjectMapper();
